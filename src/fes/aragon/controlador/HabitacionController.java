@@ -26,7 +26,7 @@ public class HabitacionController implements Initializable {
 	private ChoiceBox<String> chcTipo;
 
 	@FXML
-	private CheckBox chkRefrigedor;
+	private CheckBox chkRefrigerador;
 
 	@FXML
 	private TextField txtCosto;
@@ -46,7 +46,7 @@ public class HabitacionController implements Initializable {
 		Habitacion hab= new Habitacion();
 		hab.setNumero(this.txtNumero.getText());
 		hab.setCosto(Float.valueOf(txtCosto.getText()));
-		hab.setRefrigedor(this.chkRefrigedor.isSelected());
+		hab.setRefrigerador(this.chkRefrigerador.isSelected());
 		hab.setTipo(this.chcTipo.getValue());
 		hotel.getHabitaciones().add(hab);
 		System.out.println(hotel.getHabitaciones().get(hotel.getHabitaciones().size()-1));

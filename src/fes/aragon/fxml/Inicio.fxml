@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="685.0" style="-fx-background-color: #002847;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controlador.InicioController">
+   <bottom>
+      <HBox alignment="TOP_CENTER" prefHeight="82.0" prefWidth="685.0" spacing="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="btnNuevo" fx:id="btnNuevo" mnemonicParsing="false" onAction="#nuevoHotel" stylesheets="@../css/application.css" text="Nuevo" textFill="#f8f0f0">
+               <graphic>
+                  <FontAwesomeIconView fill="#fff9f9" glyphName="HOSPITAL_ALT" size="30" />
+               </graphic>
+            </Button>
+            <Button id="btnModificar" fx:id="btnModificar" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#modificarHotel" stylesheets="@../css/application.css" text="Modificar" textFill="#fffefe">
+               <graphic>
+                  <FontAwesomeIconView fill="#fff9f9" glyphName="HOSPITAL_ALT" size="30" />
+               </graphic>
+            </Button>
+            <Button id="btnEliminar" fx:id="btnEliminar" layoutX="89.0" layoutY="10.0" mnemonicParsing="false" onAction="#eliminarHotel" stylesheets="@../css/application.css" text="Eliminar" textFill="#f8f0f0">
+               <graphic>
+                  <FontAwesomeIconView fill="#fff9f9" glyphName="HOSPITAL_ALT" size="30" />
+               </graphic>
+            </Button>
+            <Button id="btnSalir" fx:id="btnSalir" layoutX="183.0" layoutY="10.0" mnemonicParsing="false" onAction="#salir" stylesheets="@../css/application.css" text="Salir" textFill="#f8f0f0">
+               <graphic>
+                  <FontAwesomeIconView fill="#fff9f9" glyphName="CLOSE" size="30" />
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <top>
+      <ImageView fitHeight="116.0" fitWidth="464.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../recursos/fesAragon.png" />
+         </image>
+      </ImageView>
+   </top>
+   <center>
+      <TableView id="tbl" fx:id="tblTabla" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="clmNombre" prefWidth="102.0" text="Nombre" />
+          <TableColumn fx:id="clmDireccion" prefWidth="140.0" text="Dirección" />
+            <TableColumn fx:id="clmCorreo" prefWidth="139.0" text="Correo" />
+            <TableColumn fx:id="clmTelefono" prefWidth="139.0" text="Telefono" />
+            <TableColumn fx:id="clmGerente" prefWidth="164.0" text="Gerente" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>

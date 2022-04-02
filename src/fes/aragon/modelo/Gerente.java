@@ -61,8 +61,7 @@ public class Gerente {
 
 	@Override
 	public String toString() {
-		return "Gerente [nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno="
-				+ apellidoMaterno + ", rfc=" + rfc + ", correo=" + correo + ", telefono=" + telefono + "]";
+		return nombre;
 	}
 	
 }

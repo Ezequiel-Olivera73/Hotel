@@ -1,12 +1,15 @@
 package fes.aragon.modelo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
+
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Hotel {
 	// inicializar los objetos
 	private Gerente gerente = new Gerente();
-	private ArrayList<Habitacion> habitaciones = new ArrayList<>();
+	private ObservableList<Habitacion> habitaciones = FXCollections.observableArrayList();
 
 	private String nombre;
 	private String direccion;
@@ -14,7 +17,7 @@ public class Hotel {
 	private String telefono;
 	private static Hotel instancia = new Hotel();
 
-	private Hotel() {
+	public Hotel() {
 		// inicializar el arreglo de habitacion
 		// para que tenga objetos
 
@@ -52,7 +55,7 @@ public class Hotel {
 		return correo;
 	}
 
-	public ArrayList<Habitacion> getHabitaciones() {
+	public ObservableList<Habitacion> getHabitaciones() {
 		return habitaciones;
 	}
 

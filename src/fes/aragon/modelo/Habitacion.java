@@ -3,7 +3,7 @@ package fes.aragon.modelo;
 public class Habitacion {
 	private String numero;
 	private float costo;
-	private boolean refrigedor;
+	private boolean refrigerador;
 	private String tipo;
 
 	public Habitacion() {
@@ -26,12 +26,12 @@ public class Habitacion {
 		this.costo = costo;
 	}
 
-	public boolean isRefrigedor() {
-		return refrigedor;
+	public boolean isRefrigerador() {
+		return refrigerador;
 	}
 
-	public void setRefrigedor(boolean refrigedor) {
-		this.refrigedor = refrigedor;
+	public void setRefrigerador(boolean refrigedor) {
+		this.refrigerador = refrigedor;
 	}
 
 	public String getTipo() {
@@ -44,7 +44,7 @@ public class Habitacion {
 
 	@Override
 	public String toString() {
-		return "Habitacion [numero=" + numero + ", costo=" + costo + ", refrigedor=" + refrigedor + ", tipo=" + tipo
+		return "Habitacion [numero=" + numero + ", costo=" + costo + ", refrigedor=" + refrigerador + ", tipo=" + tipo
 				+ "]";
 	}
 

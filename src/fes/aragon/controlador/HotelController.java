@@ -52,7 +52,12 @@ public class HotelController implements Initializable {
 
     @FXML
     void nuevaHabitacion(ActionEvent event) {
-    	this.nuevaVentana("Habitacion");
+    	
+    	if(Hoteles.getInstancia().isModificarHotel()) {
+    		this.nuevaVentana("ModificarHabitacion");
+    	}else {
+    		this.nuevaVentana("Habitacion");
+    	}
     }
 
     @FXML
@@ -70,12 +75,19 @@ public class HotelController implements Initializable {
     	hotel.setDireccion(this.txtDireccion.getText());
     	hotel.setCorreo(this.txtCorreo.getText());
     	hotel.setTelefono(this.txtTelefono.getText());
-    	System.out.println(hotel.toString());
+    	
     	if(Hoteles.getInstancia().isModificarHotel()) {
-    		//Se añaden los nuevos datos
+    		//indica que hotel va a modificar
+    		Hoteles.getInstancia().getGrupoHoteles().set(Hoteles.getInstancia().getIndice(), hotel);
+    		//volver nuestras variables a 0
+    		Hoteles.getInstancia().setIndice(-1);
+    		Hoteles.getInstancia().setModificarHotel(false);
+    		Hoteles.getInstancia().setIndice(-1);
+    		
     	}else {
     		Hoteles.getInstancia().getGrupoHoteles().set(Hoteles.getInstancia().getGrupoHoteles().size()-1, hotel);
     	}
+    	System.out.println(hotel);
     	this.cerrar();
     }
     private void nuevaVentana(String archivo) {
@@ -102,6 +114,12 @@ public class HotelController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		if(Hoteles.getInstancia().isModificarHotel()) {
+			this.hotel=Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getIndice());
+			this.txtNombre.setText(hotel.getNombre());
+			this.txtDireccion.setText(hotel.getDireccion());
+			this.txtCorreo.setText(hotel.getCorreo());
+			this.txtTelefono.setText(hotel.getTelefono());
+			
 			
 		}else {
 			hotel=Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getGrupoHoteles().size()-1);

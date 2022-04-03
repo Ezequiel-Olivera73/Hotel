@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import fes.aragon.modelo.Habitacion;
 import fes.aragon.modelo.Hotel;
+import fes.aragon.modelo.Hoteles;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class HabitacionController implements Initializable {
-
+	private Hotel hotel;
 	@FXML
 	private Button btnAceptar;
 
@@ -41,22 +42,32 @@ public class HabitacionController implements Initializable {
 
 	@FXML
 	void nuevaHabitacion(ActionEvent event) {
-		//me va a dar el mismo objeto de hotel
-		Hotel hotel=Hotel.getHotel();
-		Habitacion hab= new Habitacion();
+		// me va a dar el mismo objeto de hotel
+
+		Habitacion hab = new Habitacion();
 		hab.setNumero(this.txtNumero.getText());
 		hab.setCosto(Float.valueOf(txtCosto.getText()));
 		hab.setRefrigerador(this.chkRefrigerador.isSelected());
 		hab.setTipo(this.chcTipo.getValue());
-		hotel.getHabitaciones().add(hab);
-		System.out.println(hotel.getHabitaciones().get(hotel.getHabitaciones().size()-1));
-		this.cerrar();
+		if (Hoteles.getInstancia().isModificarHotel()) {
+			// Cambiar el objeto de la lista en su indice
+		} else {
+			hotel.getHabitaciones().add(hab);
+
 		}
+		this.cerrar();
+
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		this.chcTipo.getItems().addAll("Individual", "Matrimonial", "Mixto");
+		if (Hoteles.getInstancia().isModificarHotel()) {
+			// Rellenamos los campos de los datos a cambiar
+		} else {
+			hotel = Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getGrupoHoteles().size() - 1);
+		}
 	}
 
 	private void cerrar() {

@@ -2,6 +2,7 @@ package fes.aragon.controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import fes.aragon.modelo.Hotel;
@@ -13,7 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,7 +26,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import static javafx.scene.control.ButtonType.OK;
 public class InicioController implements Initializable {
 
 	@FXML
@@ -62,7 +66,21 @@ public class InicioController implements Initializable {
 
 	@FXML
 	void modificarHotel(ActionEvent event) {
-
+		//indica que fila esta señalando el usuario para modificar
+		int indice=this.tblTabla.getSelectionModel().getSelectedIndex();
+		if(indice>=0) {
+			Hoteles.getInstancia().setModificarHotel(true);
+			Hoteles.getInstancia().setIndice(indice);
+			this.nuevaVentana("Hotel");
+		}else {
+			Alert alerta;
+			alerta=new Alert(AlertType.INFORMATION);
+			alerta.setTitle("AVISO");
+			alerta.setHeaderText("Seleccione una fila");
+			alerta.setContentText("Seleccione el hotel que desea modificar");
+			Optional<ButtonType> resultado=alerta.showAndWait();
+			if(resultado.get().equals(OK));
+		}
 	}
 
 	@FXML

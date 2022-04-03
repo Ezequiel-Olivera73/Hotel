@@ -50,7 +50,9 @@ public class HabitacionController implements Initializable {
 		hab.setRefrigerador(this.chkRefrigerador.isSelected());
 		hab.setTipo(this.chcTipo.getValue());
 		if (Hoteles.getInstancia().isModificarHotel()) {
-			// Cambiar el objeto de la lista en su indice
+			
+		hotel.getHabitaciones().set(Hoteles.getInstancia().getIndiceHabitacion(), hab);
+			
 		} else {
 			hotel.getHabitaciones().add(hab);
 
@@ -65,6 +67,14 @@ public class HabitacionController implements Initializable {
 		this.chcTipo.getItems().addAll("Individual", "Matrimonial", "Mixto");
 		if (Hoteles.getInstancia().isModificarHotel()) {
 			// Rellenamos los campos de los datos a cambiar
+			
+			this.hotel=Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getIndice());
+			Habitacion hab=hotel.getHabitaciones().get(Hoteles.getInstancia().getIndiceHabitacion());
+			this.txtNumero.setText(hab.getNumero());
+			this.txtCosto.setText(String.valueOf(hab.getCosto()));
+			this.chkRefrigerador.setSelected(hab.isRefrigerador());
+			this.chcTipo.setValue(hab.getTipo());
+			
 		} else {
 			hotel = Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getGrupoHoteles().size() - 1);
 		}

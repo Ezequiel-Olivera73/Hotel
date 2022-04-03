@@ -30,8 +30,8 @@ public class Habitacion {
 		return refrigerador;
 	}
 
-	public void setRefrigerador(boolean refrigedor) {
-		this.refrigerador = refrigedor;
+	public void setRefrigerador(boolean refrigerador) {
+		this.refrigerador = refrigerador;
 	}
 
 	public String getTipo() {
@@ -44,7 +44,7 @@ public class Habitacion {
 
 	@Override
 	public String toString() {
-		return "Habitacion [numero=" + numero + ", costo=" + costo + ", refrigedor=" + refrigerador + ", tipo=" + tipo
+		return "Habitacion [numero=" + numero + ", costo=" + costo  + refrigerador + ", tipo=" + tipo
 				+ "]";
 	}
 

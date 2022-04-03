@@ -67,6 +67,14 @@ public class GerenteController implements Initializable {
 		// TODO Auto-generated method stub
 		if (Hoteles.getInstancia().isModificarHotel()) {
 			// rellenar datos
+			this.hotel=Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getIndice());
+			this.txtNombre.setText(hotel.getGerente().getNombre());
+			this.txtApellidoPaterno.setText(hotel.getGerente().getApellidoPaterno());
+			this.txtApellidoMaterno.setText(hotel.getGerente().getApellidoMaterno());
+			this.txtRfc.setText(hotel.getGerente().getApellidoMaterno());
+			this.txtCorreo.setText(hotel.getGerente().getCorreo());
+			this.txtTelefono.setText(hotel.getGerente().getTelefono());
+			
 		} else {
 			hotel= Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getGrupoHoteles().size() - 1);
 		}

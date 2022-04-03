@@ -61,7 +61,23 @@ public class InicioController implements Initializable {
 
 	@FXML
 	void eliminarHotel(ActionEvent event) {
-
+		//codigo para eliminar los hoteles que seleccionemos
+		
+		int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
+		if(indice>0) {
+			this.tblTabla.getItems().remove(indice);
+		}else {
+			//Alerta de que no a seleccionado un hotel
+			Alert alerta;
+			alerta=new Alert(AlertType.INFORMATION);
+			alerta.setTitle("AVISO");
+			alerta.setHeaderText("Seleccione una fila");
+			alerta.setContentText("Seleccione el hotel que desea modificar");
+			Optional<ButtonType> resultado=alerta.showAndWait();
+			if(resultado.get().equals(OK));{
+				
+			}
+		}
 	}
 
 	@FXML

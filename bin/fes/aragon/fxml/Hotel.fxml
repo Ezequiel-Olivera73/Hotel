@@ -35,22 +35,22 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="21.0" prefWidth="260.0" text="Correo:">
+                  <Label prefHeight="21.0" prefWidth="260.0" stylesheets="@../css/application.css" text="Correo:">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtCorreo" prefHeight="26.0" prefWidth="321.0" />
+                  <TextField fx:id="txtCorreo" prefHeight="26.0" prefWidth="321.0" stylesheets="@../css/application.css" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="142.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="21.0" prefWidth="260.0" text="Teléfono:">
+                  <Label prefHeight="21.0" prefWidth="260.0" stylesheets="@../css/application.css" text="Teléfono:">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTelefono" prefHeight="26.0" prefWidth="321.0" />
+                  <TextField fx:id="txtTelefono" prefHeight="26.0" prefWidth="321.0" stylesheets="@../css/application.css" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">

@@ -13,9 +13,9 @@
 
 .text-input:error {
 	-fx-text-fill: white;
-	-fx-boarder-insets: 0;
+	-fx-border-insets: 0;
 	-fx-border-width: 2px;
 	-fx-border-color: red;
 	-fx-border-style: hidden hidden solid hidden;
 	-fx-background-color: derive(red, 99%);
- }
+}

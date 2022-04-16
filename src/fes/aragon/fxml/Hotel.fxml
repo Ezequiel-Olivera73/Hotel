@@ -33,7 +33,7 @@
                   <TextField fx:id="txtDireccion" prefHeight="26.0" prefWidth="321.0" />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/application.css">
                <children>
                   <Label prefHeight="21.0" prefWidth="260.0" stylesheets="@../css/application.css" text="Correo:">
                      <font>
@@ -60,7 +60,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnGerente" mnemonicParsing="false" onAction="#nuevoGerente" text="Gerente" />
+                  <Button fx:id="btnGerente" mnemonicParsing="false" onAction="#nuevoGerente" stylesheets="@../css/application.css" text="Gerente" textFill="#fffafa" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="174.0" prefHeight="100.0" prefWidth="200.0">
@@ -70,17 +70,17 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnHabitacion" mnemonicParsing="false" onAction="#nuevaHabitacion" text="Habitación" />
+                  <Button fx:id="btnHabitacion" mnemonicParsing="false" onAction="#nuevaHabitacion" stylesheets="@../css/application.css" text="Habitación" textFill="WHITE" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
                <children>
-                  <Button fx:id="btnAceptar" mnemonicParsing="false" onAction="#nuevoHotel" text="Aceptar" textFill="#831818">
+                  <Button fx:id="btnAceptar" mnemonicParsing="false" onAction="#nuevoHotel" stylesheets="@../css/application.css" text="Aceptar" textFill="#f8f6f6">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelarHotel" text="Cancelar" />
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelarHotel" stylesheets="@../css/application.css" text="Cancelar" textFill="#fcf8f8" />
                </children>
                <VBox.margin>
                   <Insets />

@@ -22,7 +22,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtNumero" prefHeight="26.0" prefWidth="321.0" />
+                  <TextField fx:id="txtNumero" prefHeight="26.0" prefWidth="321.0" stylesheets="@../css/application.css" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
@@ -32,7 +32,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtCosto" prefHeight="26.0" prefWidth="321.0" />
+                  <TextField fx:id="txtCosto" prefHeight="26.0" prefWidth="321.0" stylesheets="@../css/application.css" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
@@ -57,12 +57,12 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
                <children>
-                  <Button fx:id="btnAceptar" mnemonicParsing="false" onAction="#nuevaHabitacion" text="Aceptar" textFill="#831818">
+                  <Button fx:id="btnAceptar" mnemonicParsing="false" onAction="#nuevaHabitacion" stylesheets="@../css/application.css" text="Aceptar" textFill="#f8f7f7">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelarHabitacion" text="Cancelar" />
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelarHabitacion" stylesheets="@../css/application.css" text="Cancelar" textFill="#f8f7f7" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -73,7 +73,7 @@
             </HBox>
          </children>
       </VBox>
-      <Label layoutX="162.0" layoutY="14.0" text="Nueva Habitacion">
+      <Label layoutX="162.0" layoutY="14.0" text="Nueva Habitación">
          <font>
             <Font name="Arial Bold" size="33.0" />
          </font>

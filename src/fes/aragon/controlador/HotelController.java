@@ -1,6 +1,5 @@
 package fes.aragon.controlador;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,16 +8,9 @@ import fes.aragon.modelo.Hoteles;
 import fes.aragon.modelo.TipoError;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class HotelController extends BaseController implements Initializable {
 	private Hotel hotel;
@@ -54,7 +46,6 @@ public class HotelController extends BaseController implements Initializable {
 
 	@FXML
 	void nuevaHabitacion(ActionEvent event) {
-
 		if (Hoteles.getInstancia().isModificarHotel()) {
 			this.nuevaVentana("ModificarHabitacion");
 		} else {
@@ -65,7 +56,6 @@ public class HotelController extends BaseController implements Initializable {
 	@FXML
 	void nuevoGerente(ActionEvent event) {
 		this.nuevaVentana("Gerente");
-
 	}
 
 	@FXML
@@ -88,11 +78,13 @@ public class HotelController extends BaseController implements Initializable {
 				Hoteles.getInstancia().getGrupoHoteles().set(Hoteles.getInstancia().getGrupoHoteles().size() - 1,
 						hotel);
 			}
-		
+
 			this.cerrarVentana(btnAceptar);
-		}else {
-			this.ventanaEmergente("Mensaje","Datos no correctos", this.mensajes);
+		} else {
+			this.ventanaEmergente("Mensaje", "Datos no correctos", this.mensajes);
+			this.mensajes = "";
 		}
+
 	}
 
 	@Override
@@ -111,45 +103,42 @@ public class HotelController extends BaseController implements Initializable {
 			hotel = Hoteles.getInstancia().getGrupoHoteles().get(Hoteles.getInstancia().getGrupoHoteles().size() - 1);
 		}
 	}
-	
+
 	// metodo para validar componentes
 	private boolean verificar() {
 		boolean valido = true;
 		if ((this.txtNombre.getText() == null)
 				|| (this.txtNombre.getText() != null && this.txtNombre.getText().isEmpty())) {
-			this.mensajes += "El nombre del hotel no es valido , esta vacio\n";
+			this.mensajes += "El nombre del hotel no es valido , complete el espacio\n";
 			valido = false;
-
 		}
 		if ((this.txtDireccion.getText() == null)
 				|| (this.txtDireccion != null && this.txtDireccion.getText().isEmpty())) {
-			this.mensajes += "La dirreción del hotel no es valido , esta vacio\n";
+			this.mensajes += "La direccion del hotel no es valida , complete el espacio\n";
 			valido = false;
 		}
 		if ((this.txtCorreo.getText() == null) || (this.txtCorreo != null && this.txtCorreo.getText().isEmpty())) {
-			this.mensajes += "El correo del hotel no es valido , esta vacio\n";
+			this.mensajes += "El correo del hotel no es valido , complete el espacio\n";
 			valido = false;
 		}
 		if ((this.txtCorreo.getText() == null) || (this.txtCorreo != null && !this.txtCorreo.getText().isEmpty())) {
 			if (!this.correoValido) {
-				this.mensajes += "El correo del hotel no es valido , esta mal estructurado";
+				this.mensajes += "El correo del hotel no es valido , esta mal estructurado\n";
 				valido = false;
 			}
 
 		}
-		if ((this.txtTelefono.getText() == null)
-				|| (this.txtTelefono != null && this.txtTelefono.getText().isEmpty())) {
-			this.mensajes += "El telefono del hotel no es valido , esta vacio\n";
-			valido = false;
-		}
-		if((!this.telefonoValido)) {
-			this.mensajes += "El telefono del hotel no es valido, minimo=10,maximo=10 números\n";
+		if((this.txtTelefono.getText()==null) || (this.txtTelefono != null && this.txtTelefono.getText().isEmpty())) {
+			this.mensajes += "El telefono del hotel no es valido , complete el espacio\n";
 			valido=false;
+			
+		}
+		if((this.txtTelefono.getText()==null) || (this.txtTelefono != null && !this.txtTelefono.getText().isEmpty())) {
+			if(!this.telefonoValido) {
+				this.mensajes +="El telefono del hotel no es valido , minimo 10 y maximo 10 digitos\n";
+				valido=false;
+			}
 		}
 		return valido;
-		
-	
 	}
-	
-
 }

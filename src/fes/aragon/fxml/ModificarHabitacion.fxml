@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #002847;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controlador.ModificarHabitacionController">
    <top>
       <ImageView fitHeight="150.0" fitWidth="343.0" pickOnBounds="true" BorderPane.alignment="CENTER">
@@ -23,7 +22,15 @@
    <bottom>
       <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="78.0" prefWidth="600.0" spacing="100.0">
          <children>
-            <Button fx:id="btnAceptar" mnemonicParsing="false" onAction="#aceptar" style="-fx-background-color: #00;" stylesheets="@../css/application.css" text="Aceptar" textFill="#fcfafa">
+            <Button fx:id="btnNuevo" layoutX="156.0" layoutY="10.0" mnemonicParsing="false" onAction="#nuevo" style="-fx-background-color: #00;" stylesheets="@../css/application.css" text="Nueva" textFill="#fcfafa">
+               <graphic>
+                  <FontAwesomeIconView fill="#fffbfb" glyphName="CHECK_CIRCLE_ALT" size="30" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnModificar" mnemonicParsing="false" onAction="#modificar" style="-fx-background-color: #00;" stylesheets="@../css/application.css" text="Modificar" textFill="#fcfafa">
                <graphic>
                   <FontAwesomeIconView fill="#fffbfb" glyphName="CHECK_CIRCLE_ALT" size="30" />
                </graphic>

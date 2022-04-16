@@ -1,6 +1,7 @@
 package fes.aragon.controlador;
 
-import java.io.IOException;
+import static javafx.scene.control.ButtonType.OK;
+
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -8,12 +9,9 @@ import java.util.ResourceBundle;
 import fes.aragon.modelo.Hotel;
 import fes.aragon.modelo.Hoteles;
 import javafx.application.Platform;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -21,13 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import static javafx.scene.control.ButtonType.OK;
-public class InicioController implements Initializable {
+public class InicioController  extends BaseController  implements  Initializable {
 
 	@FXML
 	private Button btnEliminar;
@@ -113,22 +105,7 @@ public class InicioController implements Initializable {
 		Platform.exit();
 	}
 
-	private void nuevaVentana(String archivo) {
-		try {
-			Pane root = (Pane) FXMLLoader.load(getClass().getResource("/fes/aragon/fxml/" + archivo + ".fxml"));
-			Scene scene = new Scene(root);
-			Stage escenario = new Stage();
-			escenario.setScene(scene);
-			escenario.initStyle(StageStyle.UNDECORATED);
-			escenario.initModality(Modality.APPLICATION_MODAL);
-			escenario.setX(Screen.getPrimary().getVisualBounds().getMaxX());
-			escenario.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

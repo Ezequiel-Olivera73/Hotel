@@ -34,8 +34,8 @@ public class BaseController {
 	private String[] expresiones = { "(\\w+)", 
 			"(\\d+)(\\.\\d{1,2})",
 			"(\\w){13}",
-			"^[\\w-]+(\\.[\\w-]+)*@[A-Za-Z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", 
-			"(\\d{10}" };
+			"^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$",
+			"(\\d){10}" };
 
 	public void nuevaVentana(String archivo) {
 		try {
@@ -68,29 +68,30 @@ public class BaseController {
 		
 	}
 	//bloque de codigo para mostrar un error , si los datos que agregemos a nuestro hotel son erroneos
-	public void verificarEntrada(TextField caja , TipoError error) {
-		caja.textProperty().addListener(evento -> {
-			String text = caja.getText();
-			if(text==null) {
-				text="";
-			}
-			String patron=expresiones[error.ordinal()];
-			Pattern pt= Pattern.compile(patron);
-			Matcher match=pt.matcher(text);
-			caja.pseudoClassStateChanged(PseudoClass.getPseudoClass("error"), !match.matches());
-			if(error==TipoError.PALABRAS) {
-				this.habitacionValido=match.matches();
-				
-			}else if(error==TipoError.NUMEROS) {
-				this.costoValido=match.matches();
-			}else if(error==TipoError.RFC) {
+public void verificarEntrada(TextField caja, TipoError error) {
+	caja.textProperty().addListener(evento ->{
+		String text = caja.getText();
+		if(text==null) {
+			text="";
+			
+		}
+		String patron=expresiones[error.ordinal()];
+		Pattern pt=Pattern.compile(patron);
+		Matcher match = pt.matcher(text);
+		caja.pseudoClassStateChanged(PseudoClass.getPseudoClass("error"), !match.matches());
+		if(error==TipoError.PALABRAS) {
+			this.habitacionValido=match.matches();
+		}else if(error==TipoError.NUMEROS) {
 			this.costoValido=match.matches();
-			}else if(error==TipoError.CORREO){
-				this.correoValido=match.matches();
-			}else if(error==TipoError.TELEFONO) {
-				this.telefonoValido=match.matches();
-			}
-		});
-	}
+		}else if(error==TipoError.RFC) {
+			this.costoValido=match.matches();
+		}else if(error==TipoError.CORREO) {
+			this.correoValido=match.matches();
+		}else if(error==TipoError.TELEFONO) {
+			this.telefonoValido=match.matches();
+		}
+		
+	});
+}
 }
 

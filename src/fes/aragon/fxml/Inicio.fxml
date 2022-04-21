@@ -12,9 +12,19 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="685.0" style="-fx-background-color: #002847;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controlador.InicioController">
    <bottom>
-      <HBox alignment="TOP_CENTER" prefHeight="82.0" prefWidth="685.0" spacing="100.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" prefHeight="82.0" prefWidth="685.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="btnNuevo" fx:id="btnNuevo" mnemonicParsing="false" onAction="#nuevoHotel" stylesheets="@../css/application.css" text="Nuevo" textFill="#f8f0f0">
+            <Button id="btnNuevo" fx:id="btnAbrir" mnemonicParsing="false" onAction="#abrirArchivo" stylesheets="@../css/application.css" text="Abrir" textFill="#f8f0f0">
+               <graphic>
+                  <FontAwesomeIconView fill="#fff9f9" glyphName="FILE_TEXT_ALT" size="30" />
+               </graphic>
+            </Button>
+            <Button id="btnNuevo" fx:id="btnGuardar" layoutX="54.0" layoutY="40.0" mnemonicParsing="false" onAction="#guardarArchivo" stylesheets="@../css/application.css" text="Guardar" textFill="#f8f0f0">
+               <graphic>
+                  <FontAwesomeIconView fill="#fff9f9" glyphName="FILE_TEXT_ALT" size="30" text="" />
+               </graphic>
+            </Button>
+            <Button id="btnNuevo" fx:id="btnNuevo" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#nuevoHotel" stylesheets="@../css/application.css" text="Nuevo" textFill="#f8f0f0">
                <graphic>
                   <FontAwesomeIconView fill="#fff9f9" glyphName="HOSPITAL_ALT" size="30" />
                </graphic>

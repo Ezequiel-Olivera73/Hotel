@@ -1,6 +1,12 @@
 package fes.aragon.modelo;
 
-public class Gerente {
+import java.io.Serializable;
+
+public class Gerente implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String apellidoPaterno;
 	private String apellidoMaterno;

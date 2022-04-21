@@ -77,7 +77,7 @@ public class GerenteController  extends BaseController  implements Initializable
 			this.txtNombre.setText(hotel.getGerente().getNombre());
 			this.txtApellidoPaterno.setText(hotel.getGerente().getApellidoPaterno());
 			this.txtApellidoMaterno.setText(hotel.getGerente().getApellidoMaterno());
-			this.txtRfc.setText(hotel.getGerente().getApellidoMaterno());
+			this.txtRfc.setText(hotel.getGerente().getRfc());
 			this.txtCorreo.setText(hotel.getGerente().getCorreo());
 			this.txtTelefono.setText(hotel.getGerente().getTelefono());
 			

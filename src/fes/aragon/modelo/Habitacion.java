@@ -1,6 +1,12 @@
 package fes.aragon.modelo;
 
-public class Habitacion {
+import java.io.Serializable;
+
+public class Habitacion implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private String numero;
 	private float costo;
 	private boolean refrigerador;

@@ -1,29 +1,36 @@
-package fes.aragon.modelo;
+package fes.aragon.modelo.archivo;
 
 
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Hotel {
+import fes.aragon.modelo.Gerente;
+import fes.aragon.modelo.Habitacion;
+
+public class HotelArchivo implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	// inicializar los objetos
 	private Gerente gerente = new Gerente();
-	private ObservableList<Habitacion> habitaciones = FXCollections.observableArrayList();
+	private ArrayList<Habitacion> habitaciones = new ArrayList<>();
 
 	private String nombre;
 	private String direccion;
 	private String correo;
 	private String telefono;
-	private static Hotel instancia = new Hotel();
+	private static HotelArchivo instancia = new HotelArchivo();
 
-	public Hotel() {
+	public HotelArchivo() {
 		// inicializar el arreglo de habitacion
 		// para que tenga objetos
 
 	}
 
-	public static Hotel getHotel() {
+	public static HotelArchivo getHotel() {
 		return instancia;
 	}
 
@@ -55,7 +62,7 @@ public class Hotel {
 		return correo;
 	}
 
-	public ObservableList<Habitacion> getHabitaciones() {
+	public ArrayList<Habitacion> getHabitaciones() {
 		return habitaciones;
 	}
 
@@ -77,7 +84,7 @@ public class Hotel {
 				+ direccion + ", correo=" + correo + ", telefono=" + telefono + "]";
 	}
 
-	public void setHabitaciones(ObservableList<Habitacion> habitaciones) {
+	public void setHabitaciones(ArrayList<Habitacion> habitaciones) {
 		this.habitaciones = habitaciones;
 	}
 

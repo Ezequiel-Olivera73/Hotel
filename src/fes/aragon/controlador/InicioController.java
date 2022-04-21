@@ -2,6 +2,7 @@ package fes.aragon.controlador;
 
 import static javafx.scene.control.ButtonType.OK;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -19,7 +20,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-public class InicioController  extends BaseController  implements  Initializable {
+
+public class InicioController extends BaseController implements Initializable {
 
 	@FXML
 	private Button btnEliminar;
@@ -32,6 +34,10 @@ public class InicioController  extends BaseController  implements  Initializable
 
 	@FXML
 	private Button btnSalir;
+	@FXML
+	private Button btnAbrir;
+	@FXML
+	private Button btnGuardar;
 
 	@FXML
 	private TableColumn<Hotel, String> clmCorreo;
@@ -53,41 +59,42 @@ public class InicioController  extends BaseController  implements  Initializable
 
 	@FXML
 	void eliminarHotel(ActionEvent event) {
-		//codigo para eliminar los hoteles que seleccionemos
-		
+		// codigo para eliminar los hoteles que seleccionemos
+
 		int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
-		if(indice>0) {
+		if (indice >= 0) {
 			this.tblTabla.getItems().remove(indice);
-		}else {
-			//Alerta de que no a seleccionado un hotel
+		} else {
+			// Alerta de que no a seleccionado un hotel
 			Alert alerta;
-			alerta=new Alert(AlertType.INFORMATION);
+			alerta = new Alert(AlertType.INFORMATION);
 			alerta.setTitle("AVISO");
 			alerta.setHeaderText("Seleccione una fila");
-			alerta.setContentText("Seleccione el hotel que desea modificar");
-			Optional<ButtonType> resultado=alerta.showAndWait();
-			if(resultado.get().equals(OK));{
-				
-			}
+			alerta.setContentText("Seleccione el hotel que desea eliminar");
+			Optional<ButtonType> resultado = alerta.showAndWait();
+			if (resultado.get().equals(OK))
+				;
+
 		}
 	}
 
 	@FXML
 	void modificarHotel(ActionEvent event) {
-		//indica que fila esta señalando el usuario para modificar
-		int indice=this.tblTabla.getSelectionModel().getSelectedIndex();
-		if(indice>=0) {
+		// indica que fila esta señalando el usuario para modificar
+		int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
+		if (indice >= 0) {
 			Hoteles.getInstancia().setModificarHotel(true);
 			Hoteles.getInstancia().setIndice(indice);
 			this.nuevaVentana("Hotel");
-		}else {
+		} else {
 			Alert alerta;
-			alerta=new Alert(AlertType.INFORMATION);
+			alerta = new Alert(AlertType.INFORMATION);
 			alerta.setTitle("AVISO");
 			alerta.setHeaderText("Seleccione una fila");
 			alerta.setContentText("Seleccione el hotel que desea modificar");
-			Optional<ButtonType> resultado=alerta.showAndWait();
-			if(resultado.get().equals(OK));
+			Optional<ButtonType> resultado = alerta.showAndWait();
+			if (resultado.get().equals(OK))
+				;
 		}
 	}
 
@@ -98,14 +105,13 @@ public class InicioController  extends BaseController  implements  Initializable
 		Hoteles.getInstancia().setIndiceHabitacion(-1);
 		Hoteles.getInstancia().getGrupoHoteles().add(new Hotel());
 		this.nuevaVentana("Hotel");
+		this.desabilitar(false);
 	}
 
 	@FXML
 	void salir(ActionEvent event) {
 		Platform.exit();
 	}
-
-	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -117,5 +123,41 @@ public class InicioController  extends BaseController  implements  Initializable
 		this.clmTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
 		this.clmGerente.setCellValueFactory(new PropertyValueFactory<>("gerente"));
 		this.tblTabla.setItems(Hoteles.getInstancia().getGrupoHoteles());
+		this.desabilitar(true);
+	}
+
+	@FXML
+	void abrirArchivo(ActionEvent event) {
+		try {
+			this.abrirArchivo(btnAbrir);
+			this.desabilitar(false);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			this.ventanaEmergente("Mensaje", "Problema en el archivo",
+					"Hay un problema en el archivo, consulta al programador");
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
+	void guardarArchivo(ActionEvent event) {
+		try {
+			this.guardarArchivo(btnGuardar);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			this.ventanaEmergente("Mensaje", "Problema en el archivo",
+					"Hay un problema en el archivo, consulta al programador");
+			e.printStackTrace();
+		}
+	}
+
+	private void desabilitar(boolean valor) {
+		this.btnGuardar.setDisable(valor);
+		this.btnModificar.setDisable(valor);
+		this.btnEliminar.setDisable(valor);
 	}
 }

@@ -1,10 +1,20 @@
 package fes.aragon.controlador;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import fes.aragon.modelo.Hotel;
+import fes.aragon.modelo.Hoteles;
 import fes.aragon.modelo.TipoError;
+import fes.aragon.modelo.archivo.HotelArchivo;
+import javafx.collections.FXCollections;
 import javafx.css.PseudoClass;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,6 +23,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -93,5 +104,68 @@ public void verificarEntrada(TextField caja, TipoError error) {
 		
 	});
 }
+	public void abrirArchivo(Button boton) throws IOException, ClassNotFoundException{
+		//TENEMOS QUE OBTENER LA ESCENA
+		Stage stage = (Stage) boton.getScene().getWindow();
+		//Abrimos una ventana de archivos
+		FileChooser archivo = new FileChooser();
+		archivo.setTitle("Abrir archivo de datos");
+		archivo.setInitialDirectory(new File(System.getProperty("user.dir")));
+		archivo.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos fes", "*.fes"));
+		//fileChooser.showOpenDialog(stage);
+		 File ruta = archivo.showOpenDialog(stage);
+		if(ruta!=null) {
+			FileInputStream fi= new FileInputStream(ruta);
+			ObjectInputStream entrada = new ObjectInputStream(fi); 	
+			ArrayList<HotelArchivo> datos=(ArrayList<HotelArchivo>)entrada.readObject();
+			//limpiamos el grupo de hoteles para mostrar los datos
+			Hoteles.getInstancia().getGrupoHoteles().clear();
+			for (HotelArchivo hotel : datos) {
+				Hotel objeto=new Hotel();
+				objeto.setNombre(hotel.getNombre());
+				objeto.setDireccion(hotel.getDireccion());
+				objeto.setCorreo(hotel.getCorreo());
+				objeto.setTelefono(hotel.getTelefono());
+				objeto.setGerente(hotel.getGerente());
+				objeto.setHabitaciones(FXCollections.observableArrayList(hotel.getHabitaciones()));
+				Hoteles.getInstancia().getGrupoHoteles().add(objeto);
+				
+			}
+			fi.close();
+			entrada.close();
+		}
+
+	}
+	public void guardarArchivo(Button boton) throws IOException{
+		//TENEMOS QUE OBTENER LA ESCENA
+		Stage stage = (Stage) boton.getScene().getWindow();
+		//Abrimos una ventana de archivos
+		FileChooser archivo = new FileChooser();
+		archivo.setTitle("Guardar archivo de datos");
+		archivo.setInitialDirectory(new File(System.getProperty("user.dir")));
+		archivo.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos fes", "*.fes"));
+
+		 File ruta= archivo.showSaveDialog(stage);
+		if(ruta!=null) {
+			FileOutputStream fo=new FileOutputStream(ruta);
+			ObjectOutputStream salida= new ObjectOutputStream(fo);
+			ArrayList<HotelArchivo> hoteles=new ArrayList<>();
+			for (Hotel hotel : Hoteles.getInstancia().getGrupoHoteles()) {
+				HotelArchivo objeto=new HotelArchivo();
+				objeto.setNombre(hotel.getNombre());
+				objeto.setDireccion(hotel.getDireccion());
+				objeto.setCorreo(hotel.getCorreo());
+				objeto.setTelefono(hotel.getTelefono());
+				objeto.setGerente(hotel.getGerente());
+				objeto.setHabitaciones(new ArrayList<>(hotel.getHabitaciones()));
+				hoteles.add(objeto);
+			}
+			salida.writeObject(hoteles);
+			salida.close();
+			fo.close();
+		}
+
+	}
+	
 }
 

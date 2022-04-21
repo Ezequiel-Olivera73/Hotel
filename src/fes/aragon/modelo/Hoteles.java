@@ -14,6 +14,8 @@ public class Hoteles {
 
 	private Hoteles() {
 		// estamos creando un hotel
+		
+		/*
 		Hotel h = new Hotel();
 		h.setNombre("Dato1");
 		h.setDireccion("Dato2");
@@ -32,7 +34,10 @@ public class Hoteles {
 		h.getHabitaciones().add(hab);
 
 		// se agrego un hotel al grupo hoteles
+		 * 
+		 
 		this.grupoHoteles.add(h);
+		*/
 	}
 
 	public static Hoteles getInstancia() {
@@ -65,6 +70,10 @@ public class Hoteles {
 
 	public ObservableList<Hotel> getGrupoHoteles() {
 		return grupoHoteles;
+	}
+
+	public void setGrupoHoteles(ObservableList<Hotel> grupoHoteles) {
+		this.grupoHoteles = grupoHoteles;
 	}
 
 }

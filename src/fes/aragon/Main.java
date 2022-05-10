@@ -19,7 +19,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/fes/aragon/css/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setX(Screen.getPrimary().getVisualBounds().getMaxX());
+			//primaryStage.setX(Screen.getPrimary().getVisualBounds().getMaxX());
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -56,7 +56,8 @@ public class BaseController {
 			escenario.setScene(scene);
 			escenario.initStyle(StageStyle.UNDECORATED);
 			escenario.initModality(Modality.APPLICATION_MODAL);
-			escenario.setX(Screen.getPrimary().getVisualBounds().getMaxX());
+			//Esta linea de codigo permite enviar la ventana a la segunda pantalla
+			//escenario.setX(Screen.getPrimary().getVisualBounds().getMaxX());
 			escenario.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -66,7 +67,8 @@ public class BaseController {
 	public void ventanaEmergente(String titulo , String encabezado , String contenido) {
 		Alert alerta;
 		alerta= new Alert(AlertType.INFORMATION);
-		alerta.setX(Screen.getPrimary().getVisualBounds().getMaxX()+300);
+		//Esta linea de codigo permite enviar la ventana a la segunda pantalla
+		//alerta.setX(Screen.getPrimary().getVisualBounds().getMaxX()+300);
 		alerta.setTitle(titulo);
 		alerta.setHeaderText(encabezado);
 		alerta.setContentText(contenido);
